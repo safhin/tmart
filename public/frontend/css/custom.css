@@ -34,3 +34,11 @@
 #card-errors {
     color: #fa755a;
 }
+
+.htc__product__container .product-categories-all.shop-page-cat {
+    margin-top: 100px !important;
+}
+
+.product-categories-menu ul li.active a {
+    color: #fa755a;
+}

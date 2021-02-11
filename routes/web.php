@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\ShopPageController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ConfirmationController;
+use App\Http\Controllers\Frontend\CuponController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +20,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingPage');
-Route::get('/product', [ShopPageController::class, 'index'])->name('shop.index');
-Route::get('/products/{slug}', [ShopPageController::class, 'show'])->name('shop.show');
+Route::get('/shop', [ShopPageController::class, 'index'])->name('shop.index');
+Route::get('/shop/{slug}', [ShopPageController::class, 'show'])->name('shop.show');
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
 Route::patch('/cart/{product}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+Route::post('/cupon', [CuponController::class, 'store'])->name('cupon.store');
+Route::delete('/cupon', [CuponController::class, 'destroy'])->name('cupon.destroy');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');

@@ -125,9 +125,56 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="puick-contact-area mt--60">
-                            <h2 class="section-title-3">Quick Contract</h2>
-                            <a href="phone:+8801722889963">+012 345 678 102 </a>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>Subtotal</p>
+                                <p>Tax</p>
+                                @if (session()->has('cupon'))
+                                <p style="display: inline;"> Disacount:({{ session()->get('cupon')['name'] }})</p>
+                                    <form action="{{ route('cupon.destroy') }}" method="post" style="display: inline-flex;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit">Remove</button>
+                                    </form>
+                                @endif
+                                @if (!session()->has('cupon'))
+                                    <p>Total</p>
+                                @endif
+                                @if (session()->has('cupon'))
+                                    <p>New Subtotal</p>
+                                    <p>New Tax</p>
+                                    <strong>New Total</strong>
+                                @endif
+                            </div>
+                            <div class="col-sm-6">
+                                <p>{{ Cart::subtotal() }}</p>
+                                <p>{{ Cart::tax() }}</p>
+                                @if (session()->has('cupon'))
+                                    <p>{{ session()->get('cupon')['discount'] }}</p>
+                                @endif
+                                @if (!session()->has('cupon'))
+                                    {{ Cart::total() }}
+                                @endif
+                                @if (session()->has('cupon'))
+                                    <p>{{ $newSubtotal }}</p>
+                                    <p>{{ $newTax }}</p>
+                                    <strong>{{ $newTotal }}</strong>
+                                @endif
+                            </div>
+                            
+                            @if (!session()->has('cupon'))
+                                <div class="col-md-8 col-sm-7 col-xs-12">
+                                    <div class="coupon">
+                                        <h3>Coupon</h3>
+                                        <p>Enter your coupon code if you have one.</p>
+                                        <form action="{{ route('cupon.store') }}" method="POST">
+                                            @csrf
+                                            <input type="text" name="cupon_code" id="cupon_code" placeholder="Coupon code" />
+                                            <input type="submit" value="Apply Coupon" />
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
