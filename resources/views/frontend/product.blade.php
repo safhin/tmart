@@ -105,7 +105,7 @@
                             <span class="rat__qun">(Based on 0 Ratings)</span>
                         </div>
                         <div class="pro__details">
-                            <p>{{ $product->details }}</p>
+                            <p>{!! $product->details !!}</p>
                         </div>
                         <ul class="pro__dtl__prize">
                             <li class="old__prize">TK-{{ $product->price }}</li>
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <ul class="pro__dtl__btn">
-                            <form action="{{ route('cart.store') }}" method="POST">
+                            <form action="{{ route('cart.store',$product->slug) }}" method="POST">
                                 @csrf
                                 <input type="hidden" id="id" value="{{ $product->id }}">
                                 <input type="hidden" id="title" value="{{ $product->title }}">

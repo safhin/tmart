@@ -38,7 +38,7 @@ class ShopPageController extends Controller
     public function show($slug)
     {
 
-        $products = Product::where('slug',$slug)->firstOrFail();
-        return view('frontend.product')->with('products', $products);
+        $product = Product::where('slug',$slug)->firstOrFail();
+        return view('frontend.product')->with('product', $product);
     }
 }

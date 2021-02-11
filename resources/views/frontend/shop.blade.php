@@ -76,7 +76,7 @@
                                             </div>
                                         </div>
                                         <div class="product__details">
-                                            <h2><a href="product-details.html">{{ $product->title }}</a></h2>
+                                            <h2><a href="{{ route('shop.show',$product->slug) }}">{{ $product->title }}</a></h2>
                                             <ul class="product__price">
                                                 <li class="new__price">TK-{{ $product->price }}</li>
                                             </ul>
