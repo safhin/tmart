@@ -56,16 +56,7 @@
                         </div>
                         <!-- Start MAinmenu Ares -->
                         <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
-                            <nav class="mainmenu__nav hidden-xs hidden-sm">
-                                <ul class="main__menu">
-                                    <li class="drop"><a href="{{ route('landingPage') }}">Home</a></li>
-                                    <li class="drop"><a href="blog.html">Blog</a>
-                                    </li>
-                                    <li class="drop"><a href="{{ route('shop.index') }}">Shop</a></li>
-                                    <li class="drop"><a href="{{ route('cart.index') }}">cart</a></li>
-                                    <li><a href="contact.html">contact</a></li>
-                                </ul>
-                            </nav>
+                            {{ menu('main','frontend.partials.menus.main') }}
                             <div class="mobile-menu clearfix visible-xs visible-sm">
                                 <nav id="mobile_dropdown">
                                     <ul>
@@ -296,12 +287,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <ul class="social__icon">
-                                    <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                </ul>
+                                {{ menu('footer', 'frontend.partials.menus.footer') }}
                             </div>
                         </div>
                         <!-- End Single Footer Widget -->
