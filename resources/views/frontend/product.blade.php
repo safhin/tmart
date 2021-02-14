@@ -28,62 +28,23 @@
                 <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                     <div class="product__details__container">
                         <!-- Start Small images -->
-                        <ul class="product__small__images" role="tablist">
-                            <li role="presentation" class="pot-small-img active">
-                                <a href="#img-tab-1" role="tab" data-toggle="tab">
-                                    <img src="{{ asset('frontend/images/product-details/small-img/1.jpg') }}" alt="small-image">
-                                </a>
+                        <ul class="product__small__images">
+                            <li class="pot-small-img selected">
+                                <img src="{{ productImage($product->image) }}" alt="small-image">
                             </li>
-                            <li role="presentation" class="pot-small-img">
-                                <a href="#img-tab-2" role="tab" data-toggle="tab">
-                                    <img src="{{ asset('frontend/images/product-details/small-img/2.jpg') }}" alt="small-image">
-                                </a>
-                            </li>
-                            <li role="presentation" class="pot-small-img hidden-xs">
-                                <a href="#img-tab-3" role="tab" data-toggle="tab">
-                                    <img src="{{ asset('frontend/images/product-details/small-img/3.jpg') }}" alt="small-image">
-                                </a>
-                            </li>
-                            <li role="presentation" class="pot-small-img hidden-xs hidden-sm">
-                                <a href="#img-tab-4" role="tab" data-toggle="tab">
-                                    <img src="{{ asset('frontend/images/product-details/small-img/2.jpg') }}" alt="small-image">
-                                </a>
-                            </li>
+                            @if ($product->images)
+                                @foreach (json_decode($product->images, true) as $image)
+                                    <li class="pot-small-img selected">
+                                        <img src="{{ asset('storage/'.$image) }}" alt="small-image">
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                         <!-- End Small images -->
                         <div class="product__big__images">
-                            <div class="portfolio-full-image tab-content">
-                                <div role="tabpanel" class="tab-pane fade in active product-video-position" id="img-tab-1">
-                                    <img src="{{ asset("frontend/images/products/shop/$product->slug.jpg") }}" alt="full-image">
-                                    <div class="product-video">
-                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                            <i class="zmdi zmdi-videocam"></i> View Video
-                                        </a>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-2">
-                                    <img src="{{ asset('frontend/images/product-details/big-img/12.jpg') }}" alt="full-image">
-                                    <div class="product-video">
-                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                            <i class="zmdi zmdi-videocam"></i> View Video
-                                        </a>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-3">
-                                    <img src="{{ asset('frontend/images/product-details/big-img/11.jpg') }}" alt="full-image">
-                                    <div class="product-video">
-                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                            <i class="zmdi zmdi-videocam"></i> View Video
-                                        </a>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-4">
-                                    <img src="{{ asset('frontend/images/product-details/big-img/12.jpg') }}" alt="full-image">
-                                    <div class="product-video">
-                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                            <i class="zmdi zmdi-videocam"></i> View Video
-                                        </a>
-                                    </div>
+                            <div class="portfolio-full-image">
+                                <div class="product-section-image">
+                                    <img id="currentImage" class="active" src="{{ productImage($product->image) }}" alt="full-image">
                                 </div>
                             </div>
                         </div>
@@ -352,4 +313,27 @@
         </div>
     </section>
     <!-- End Product tab -->
+@endsection
+
+
+@section('extra-js')
+    <script>
+        (function(){
+            const currentImage = document.querySelector('#currentImage');
+            const images = document.querySelectorAll('.pot-small-img');
+
+            images.forEach((element) => element.addEventListener('click', thumbnailClick));
+
+            function thumbnailClick(e){
+                // currentImage.src = this.querySelector('img').src;
+
+                currentImage.classList.remove('active');
+
+                currentImage.addEventListener('transitionend', () => {
+                    currentImage.src = this.querySelector('img').src;
+                    currentImage.classList.add('active');
+                });
+            }
+        })();
+    </script>
 @endsection

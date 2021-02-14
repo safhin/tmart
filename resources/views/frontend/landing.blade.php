@@ -297,7 +297,7 @@
                                 <div class="product__inner">
                                     <div class="pro__thumb">
                                         <a href="#">
-                                            <img src="{{ asset("frontend/images/products/shop/$product->slug.jpg") }}" alt="product images">
+                                            <img src="{{ productImage($product->image) }}" alt="product images">
                                         </a>
                                     </div>
                                     <div class="product__hover__info">

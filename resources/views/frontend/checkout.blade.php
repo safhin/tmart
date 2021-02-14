@@ -108,7 +108,7 @@
                                 <tbody>
                                     @foreach (Cart::content() as $item)
                                         <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="{{ asset('frontend/images/products/shop/'.$item->model->slug.'.jpg') }}" alt="product img" /></a></td>
+                                            <td class="product-thumbnail"><a href="#"><img src="{{ asset('storage/'.$item->model->image) }}" alt="product img" /></a></td>
                                             <td class="product-name"><a href="#">{{ $item->model->title }}</a></td>
                                             <td class="product-price"><span class="amount">TK-{{ $item->model->price }}</span></td>
                                             <td class="product-quantity"><input type="number" value="1" /></td>
