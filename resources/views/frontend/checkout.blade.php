@@ -39,7 +39,7 @@
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <li>{!! $error !!}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -49,25 +49,29 @@
                     <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
                         @csrf
                         <div class="form-group">
-                            <input class="form-control" type="text" id="name" name="name" placeholder="Name">
+                            <input class="form-control" type="text" placeholder="Name *" name="name" value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="email" name="email" placeholder="Email">
+                            @if (auth()->user())
+                                <input class="form-control" type="text" id="email" name="email" value="{{ auth()->user()->email }}" placeholder="Email" readonly>
+                            @else
+                                <input class="form-control" type="text" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                            @endif
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="phone" name="phone" placeholder="Phone">
+                            <input class="form-control" type="phone" id="phone" name="phone" placeholder="Phone" value="{{ old('phone') }}">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="state" id="city" name="city" placeholder="City">
+                            <input class="form-control" type="text" id="city" name="city" placeholder="City" value="{{ old('city') }}">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="address" name="address" placeholder="Address">
+                            <input class="form-control" type="text" id="address" name="address" placeholder="Address" value="{{ old('address') }}">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="province" name="province" placeholder="Province">
+                            <input class="form-control" type="text" id="province" name="province" placeholder="Province" value="{{ old('province') }}">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="postalcode" name="postalcode" placeholder="Postalcode">
+                            <input class="form-control" type="text" id="postalcode" name="postalcode" placeholder="Postalcode" value="{{ old('province') }}">
                         </div>
                         <div class="form-group">
                             <div class="payment-form">

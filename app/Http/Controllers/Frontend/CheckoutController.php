@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CheckoutRequest;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
@@ -20,7 +21,7 @@ class CheckoutController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
         $contents = Cart::content()->map(function($item){
             return $item->model->slug.','.$item->qty;
