@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckoutRequest;
+use App\Mail\OrderPlaced;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -42,7 +44,8 @@ class CheckoutController extends Controller
                 ]
             ]);
 
-            $this->addOrdersTable($request, null);
+            $order =$this->addOrdersTable($request, null);
+            Mail::send(new OrderPlaced($order));
             
             Cart::instance('default')->destroy();
             session()->forget('cupon');
@@ -83,6 +86,8 @@ class CheckoutController extends Controller
                 'quantity' => $item->qty
             ]);
         }
+
+        return $order;
     }
 
     private function getAmounts()
