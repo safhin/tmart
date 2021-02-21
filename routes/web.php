@@ -38,6 +38,8 @@ Route::get('/guestCheckout', [CheckoutController::class, 'index'])->name('checko
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('/thankyou', [ConfirmationController::class,'index'])->name('confirmation.index');
 
+Route::get('/search', [ShopPageController::class, 'search'])->name('search');
+Route::get('/instant-search', [ShopPageController::class, 'searchInstant'])->name('searchInstant');
 
 
 Route::group(['prefix' => 'admin'], function () {

@@ -41,4 +41,18 @@ class ShopPageController extends Controller
         $product = Product::where('slug',$slug)->firstOrFail();
         return view('frontend.product')->with('product', $product);
     }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'query' => 'required|min:3',
+        ]);
+        $query = $request->input('query');
+        $products = Product::search($query)->get();
+        return view('frontend.search')->with('products', $products);
+    }
+    public function searchInstant(Request $request)
+    {
+        return view('frontend.instant-search');
+    }
 }

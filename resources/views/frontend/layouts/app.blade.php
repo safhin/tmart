@@ -27,10 +27,17 @@
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
 
     <!-- Modernizr JS -->
     <script src="{{ asset('frontend/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    
 
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+    {{-- Algolia instant search --}}
+    
     @yield('extra-css')
 </head>
 
@@ -53,6 +60,9 @@
                                     <img src="{{ asset('frontend/images/logo/logo.png') }}" alt="logo">
                                 </a>
                                 {{ menu('main','frontend.partials.menus.main') }}
+                                <div class="aa-input-container" id="aa-input-container">
+                                    <input type="search" id="search-input" class="aa-input-search aa-input" placeholder="Search with alogila..." name="search" autocomplete="off"/>
+                                </div>
                             </div>
                         </div>
                         <!-- End MAinmenu Ares -->
@@ -95,8 +105,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="search__inner">
-                                <form action="#" method="get">
-                                    <input placeholder="Search here... " type="text">
+                                <form action="{{ route('search') }}" method="get">
+                                    <input placeholder="Search here... " type="text" name="query" id="query">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
@@ -436,6 +446,7 @@
     <!-- END QUICKVIEW PRODUCT -->
     <!-- Placed js at the end of the document so the pages load faster -->
 
+    <script src="{{ asset('js/algolia.js') }}"></script>
     <!-- jquery latest version -->
     <script src="{{ asset('frontend/js/vendor/jquery-1.12.0.min.js') }}"></script>
     <!-- Bootstrap framework js -->

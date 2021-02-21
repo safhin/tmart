@@ -42,3 +42,28 @@
 .product-categories-menu ul li.active a {
     color: #fa755a;
 }
+
+.login-btn {
+    float: right;
+}
+
+.login-btn a {
+    color: #fff;
+}
+.htc__login__register h2 {
+    margin-bottom: 40px;
+}
+.form-section {
+    margin-left: 18px;
+}
+.htc__login__register .col-sm-4,
+.htc__login__register .col-sm-8 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.signup_details {
+    padding-left: 100px;
+    border-left: 1px solid #cdcdcd;
+    padding-bottom: 50px;
+}
