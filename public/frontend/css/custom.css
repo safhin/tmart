@@ -67,3 +67,11 @@
     border-left: 1px solid #cdcdcd;
     padding-bottom: 50px;
 }
+
+.blog__hover__action p.blog__des a,
+.blog__hover__action p.blog__des ul li a,
+.blog__btn a,
+.bl__meta,
+.bl__meta a {
+    color: #fff;
+}
