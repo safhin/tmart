@@ -59,16 +59,21 @@
                                             </div>
                                             <div class="product__hover__info">
                                                 <ul class="product__action">
-                                                    <li><a data-toggle="modal" data-target="#productModal"
+                                                    <li>
+                                                        <a data-toggle="modal" data-target="#productModal"
                                                             title="Quick View" class="quick-view modal-view detail-link"
-                                                            href="#"><span class="ti-plus"></span></a></li>
-                                                            <form action="{{ route('cart.store', $product) }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" id="id" value="{{ $product->id }}">
-                                                                <input type="hidden" id="title" value="{{ $product->title }}">
-                                                                <input type="hidden" id="price" value="{{ $product->price }}">
-                                                                <button type="submit"><span class="ti-shopping-cart"></span></button>
-                                                            </form>
+                                                            href="#"><span class="ti-plus"></span>
+                                                        </a>
+                                                    </li>
+                                                    @if ($product->quantity > 0)
+                                                        <form action="{{ route('cart.store', $product) }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" id="id" value="{{ $product->id }}">
+                                                            <input type="hidden" id="title" value="{{ $product->title }}">
+                                                            <input type="hidden" id="price" value="{{ $product->price }}">
+                                                            <button type="submit"><span class="ti-shopping-cart"></span></button>
+                                                        </form>
+                                                    @endif
                                                     <li>
                                                         <a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a>
                                                     </li>

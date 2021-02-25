@@ -18,7 +18,7 @@
                                     </span>
                                 @enderror
                             
-                                <input id="password" type="password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                                <input id="password" type="password" @error('password') is-invalid @enderror name="password" required autocomplete="current-password" placeholder="Password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -38,25 +38,15 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="htc__login__btn mt--30">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
+                                <div class="footer_login">
+                                    <div class="htc__login__btn">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Login') }}
+                                        </button>
+                                    </div>
+                                    <span class="guest_checkout"><a href="{{ route('checkout.guest') }}">Checkout as a guest</a></span>
                                 </div>
-                                <a href="{{ route('checkout.guest') }}">Checkout as a guest</a>
                             </form>
-                            <div class="htc__social__connect">
-                                <h2>Or Login With</h2>
-                                <ul class="htc__soaial__list">
-                                    <li><a class="bg--twitter" href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-            
-                                    <li><a class="bg--instagram" href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-            
-                                    <li><a class="bg--facebook" href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-            
-                                    <li><a class="bg--googleplus" href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
                         <!-- End Single Content -->
                     </div>

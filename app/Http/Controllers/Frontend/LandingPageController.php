@@ -12,9 +12,11 @@ class LandingPageController extends Controller
     {   
         $productRow1 = Product::inRandomOrder()->take(6)->get();
         $productRow2 = Product::inRandomOrder()->take(3)->get();
+        $featuredSlider = Product::inRandomOrder()->take(4)->get();
         return view('frontend.landing',[
             'productRow1' => $productRow1,
-            'productRow2' => $productRow2
+            'productRow2' => $productRow2,
+            'featuredSlider' => $featuredSlider
         ]);
     }
 }

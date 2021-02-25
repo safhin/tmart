@@ -75,3 +75,44 @@
 .bl__meta a {
     color: #fff;
 }
+
+.tabs__checkbox input[type="checkbox"] {
+    display: inline-block;
+    width: 21px;
+}
+
+.htc__login__btn {
+    text-align: center;
+    display: inline-block;
+}
+.tabs__checkbox span.forget a {
+    float: right;
+    color: #ff4136;
+    font-size: 14px;
+    margin-top: 8px;
+}
+.tabs__checkbox label {
+    bottom: 15px;
+}
+
+.footer_login {
+    display: flex;
+    justify-content: space-between;
+}
+.slider_thumb {
+    max-width: 450px;
+    max-height: 450px;
+}
+button.htc__btn {
+    border: none;
+    background: no-repeat;
+    font-size: 17px;
+}
+
+button.htc__btn:hover {
+    border-bottom: 2px solid #ff4136;
+}
+.slider-text-right .slider__inner h1,
+.slider-text-right .slider__btn {
+    text-align: left;
+}

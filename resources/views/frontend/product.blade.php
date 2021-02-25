@@ -69,8 +69,8 @@
                             <p>{!! $product->details !!}</p>
                         </div>
                         <ul class="pro__dtl__prize">
-                            <li class="old__prize">TK-{{ $product->price }}</li>
-                            <li>$10.00</li>
+                            <li class="old__prize">$10.00</li>
+                            <li>TK-{{ $product->price }}</li>
                         </ul>
                         <div class="pro__dtl__color">
                             <h2 class="title__5">Choose Colour</h2>
@@ -94,23 +94,21 @@
                         <div class="product-action-wrap">
                             <div class="prodict-statas"><span>Quantity :</span></div>
                             <div class="product-quantity">
-                                <form id='myform' method='POST' action='#'>
-                                    <div class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
-                                        </div>
-                                    </div>
-                                </form>
+                                <div class="product-quantity">
+                                    <span>{!! $stockLevel !!}</span>
+                                </div>
                             </div>
                         </div>
                         <ul class="pro__dtl__btn">
-                            <form action="{{ route('cart.store',$product->slug) }}" method="POST">
-                                @csrf
-                                <input type="hidden" id="id" value="{{ $product->id }}">
-                                <input type="hidden" id="title" value="{{ $product->title }}">
-                                <input type="hidden" id="price" value="{{ $product->price }}">
-                                <button class="btn buy__now__btn btn-lg" type="submit">buy now</button>
-                            </form>
+                            @if ($product->quantity > 0)
+                                <form action="{{ route('cart.store',$product) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" id="id" value="{{ $product->id }}">
+                                    <input type="hidden" id="title" value="{{ $product->title }}">
+                                    <input type="hidden" id="price" value="{{ $product->price }}">
+                                    <button class="btn buy__now__btn btn-lg" type="submit">buy now</button>
+                                </form>
+                            @endif
                             {{-- <li class="buy__now__btn"><a href="#">buy now</a></li> --}}
                             <li><a href="#"><span class="ti-heart"></span></a></li>
                             <li><a href="#"><span class="ti-email"></span></a></li>
