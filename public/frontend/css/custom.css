@@ -116,3 +116,8 @@ button.htc__btn:hover {
 .slider-text-right .slider__btn {
     text-align: left;
 }
+
+button.add_to_cart {
+    border: none;
+    background: none;
+}

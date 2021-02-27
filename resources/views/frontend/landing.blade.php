@@ -38,7 +38,7 @@
                                                         <input type="hidden" id="id" value="{{ $product->id }}">
                                                         <input type="hidden" id="title" value="{{ $product->title }}">
                                                         <input type="hidden" id="price" value="{{ $product->price }}">
-                                                        <button type="submit"><span class="ti-shopping-cart"></span></button>
+                                                        <button class="add_to_cart" type="submit"><span class="ti-shopping-cart"></span></button>
                                                     </form>
                                                 </li>
                                             @endif
